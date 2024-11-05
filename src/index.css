@@ -1,0 +1,311 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+/* меняет подсчет ширины блока для удобства */
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* убираем линии обводки у браузеров */
+:focus,
+:active {
+  outline: none;
+}
+a:focus,
+a:active {
+  outline: none;
+}
+/* делаем значения блочными */
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+/* уравниваем поведение шрифтов и элементов для разных браузеров */
+html,
+body {
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -mos-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+}
+/* просим теги наследовать семейство шрифта */
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+/* убираем некоторые особенности в разных браузерах */
+input::-ms-clear {
+  display: none;
+}
+button {
+  cursor: pointer;
+}
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+a,
+a:visited {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+ul li {
+  list-style: none;
+}
+img {
+  vertical-align: top;
+}
+/* обнуляем заголовки h */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: 500;
+}
+
+/* ------------------------------------ */
+
+nav {
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+  gap: 15px;
+}
+
+button {
+  background: none;
+}
+
+
+.navBar-container {
+  margin: 0 auto;
+}
+
+.navBar-basket {
+  display: flex;
+  align-items: center;
+  margin-left: 80px;
+  
+}
+
+.navBar-basket:hover {
+  background-color: aquamarine;
+  padding: 10px 20px;
+  border-radius: 15px;
+  color: black;
+  cursor: pointer;
+}
+
+.link {
+  padding: 10px 20px;
+  border-radius: 15px;
+  color: black;
+}
+
+.active {
+  background-color: aquamarine;
+}
+
+.product {
+  padding: 10px;
+  border-radius: 15px;
+  border: 1px solid aquamarine;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 220px;
+  gap: 5px;
+}
+
+.product-img {
+  width: 200px;
+  height: 150px;
+  object-fit: contain;
+}
+
+.product-name {
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.product-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.product-price {
+  font-weight: 800;
+  font-size: 16px;
+}
+
+.product-btn {
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 15px;
+  background-color: aquamarine;
+}
+
+.products {
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 95%;
+  gap: 20px;
+}
+
+.home-tittle, .basket-empty, .fullProduct-empty {
+  display: flex;
+  justify-content: center;
+  max-width: 500px;
+  margin: 0 auto;
+  padding-top: 150px;
+  font-size: 40px;
+  font-weight: 1000;
+}
+
+.fullProduct {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  padding-top: 100px;
+  justify-content: space-between;
+}
+
+.fullProduct-img {
+  max-width: 450px;
+  max-height: 550px;
+}
+
+.fullProduct-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 500px;
+  width: 300px;
+}
+
+.fullProduct-title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.fullProduct-price {
+  text-align: center;
+  max-width: 50px;
+  display: flex;
+  align-items: center;
+  background-color: aquamarine;
+  border: 1px solid aquamarine;
+  border-radius: 5px;
+}
+
+.fullProduct-actions {
+  display: flex;
+  gap: 5px;
+}
+
+.contact {
+  max-width: 750px;
+  margin: 0 auto;
+  padding-top: 150px;
+  text-align: center;
+  font-size: 40px;
+  font-weight: 1000;
+}
+
+
+
+.basket-container {
+  border: 1px solid black; 
+  border-radius: 5px;
+  height: 145px;
+  margin: 0 auto;
+  max-width: 750px;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  padding: 10px 10px;
+}
+.basket-container > :last-child {
+  margin-left: auto;  
+}
+
+.basket-img {
+  width: 100px;
+}
+
+.basket-container {
+  font-weight: 800;
+}
+
+.basket-actions {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.categories {
+  display: flex;
+  gap: 10px;
+  width: 95%;
+  margin: 20px auto;
+}
+
+.btn-active{
+  border-radius: 5px;
+  background-color: aquamarine;
+}
+
+.btn { 
+  background: none;
+}
+
+.fitler-select{
+  margin-left: 36px;
+  margin-bottom: 10px;
+  
+}
+
+.basket-fullPrice {
+  max-width: 50%;
+  padding: 5px;
+  margin: 0 auto;
+}
+
+.basket-delete {
+  background: none ;
+  border-radius: 5px;
+}
+
+.basket-delete:hover {
+  background-color: aquamarine;
+}
+
+.basket-count {
+  display: flex;
+  gap: 5px;
+}
