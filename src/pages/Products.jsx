@@ -1,5 +1,7 @@
+import { Navigate } from "react-router-dom";
 import Filter from "../components/Filter";
 import Product from "../components/Product";
+import Skeleton from "react-loading-skeleton";
 
 export default function Products({
   products,
@@ -9,7 +11,15 @@ export default function Products({
   setActiveCategory,
   activeSort,
   setAciveSort,
+  error,
+  isPending,
 }) {
+  if (error) {
+    return <Navigate to={"/error"} />;
+  }
+  const skeletons = [...new Array(5)].map((_, i) => (
+    <Skeleton key={i} height={"250px"} width={"220px"} />
+  ));
   return (
     <>
       <Filter
@@ -19,11 +29,15 @@ export default function Products({
         setActiveCategory={setActiveCategory}
       />
       <div className="products">
-        {products.map((el) => (
-          <div key={el.id} onClick={() => setSelectedProduct(el.id)}>
-            <Product el={el} addToBasket={addToBasket} />
-          </div>
-        ))}
+        {isPending ? (
+          skeletons
+        ) : (
+          products.map((el) => (
+            <div key={el.id} onClick={() => setSelectedProduct(el.id)}>
+              <Product el={el} addToBasket={addToBasket} />
+            </div>
+          ))
+        )}
       </div>
     </>
   );

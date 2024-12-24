@@ -93,7 +93,6 @@ button {
   background: none;
 }
 
-
 .navBar-container {
   margin: 0 auto;
 }
@@ -102,7 +101,6 @@ button {
   display: flex;
   align-items: center;
   margin-left: 80px;
-  
 }
 
 .navBar-basket:hover {
@@ -131,6 +129,7 @@ button {
   justify-content: space-between;
   flex-direction: column;
   width: 220px;
+  height: 250px;
   gap: 5px;
 }
 
@@ -141,6 +140,11 @@ button {
 }
 
 .product-name {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+
   font-size: 16px;
   font-weight: 800;
 }
@@ -172,7 +176,9 @@ button {
   gap: 20px;
 }
 
-.home-tittle, .basket-empty, .fullProduct-empty {
+.home-tittle,
+.basket-empty,
+.fullProduct-empty {
   display: flex;
   justify-content: center;
   max-width: 500px;
@@ -236,10 +242,8 @@ button {
   font-weight: 1000;
 }
 
-
-
 .basket-container {
-  border: 1px solid black; 
+  border: 1px solid black;
   border-radius: 5px;
   height: 145px;
   margin: 0 auto;
@@ -250,7 +254,7 @@ button {
   padding: 10px 10px;
 }
 .basket-container > :last-child {
-  margin-left: auto;  
+  margin-left: auto;
 }
 
 .basket-img {
@@ -275,19 +279,18 @@ button {
   margin: 20px auto;
 }
 
-.btn-active{
+.btn-active {
   border-radius: 5px;
   background-color: aquamarine;
 }
 
-.btn { 
+.btn {
   background: none;
 }
 
-.fitler-select{
+.fitler-select {
   margin-left: 36px;
   margin-bottom: 10px;
-  
 }
 
 .basket-fullPrice {
@@ -297,7 +300,7 @@ button {
 }
 
 .basket-delete {
-  background: none ;
+  background: none;
   border-radius: 5px;
 }
 
@@ -308,4 +311,11 @@ button {
 .basket-count {
   display: flex;
   gap: 5px;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
 }

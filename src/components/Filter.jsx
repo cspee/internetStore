@@ -1,5 +1,6 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import Skeleton from "react-loading-skeleton";
+import { useNavigate } from "react-router-dom";
 
 export default function Filter({
   activeCategory,
@@ -7,13 +8,28 @@ export default function Filter({
   activeSort,
   setAciveSort,
 }) {
-  const [categories, setCategories] = useState([]);
+  const navigate = useNavigate();
+  const {
+    isPending,
+    error,
+    data: categories,
+  } = useQuery({
+    queryKey: ["getCategories"],
+    queryFn: () =>
+      fetch("https://fakestoreapi.com/products/categories").then((res) =>
+        res.json()
+      ),
+  });
+  console.log(categories);
 
-  useEffect(() => {
-    axios
-      .get("https://fakestoreapi.com/products/categories")
-      .then((response) => setCategories(response.data));
-  }, []);
+  
+  if (error) {
+    navigate("/error");
+    return;
+  }
+  const skeletons = [...new Array(6)].map((_, i) => (
+    <Skeleton key={i} height={"16px"} width={"50px"} />
+  ));
   return (
     <>
       <div className="categories">
@@ -23,7 +39,7 @@ export default function Filter({
         >
           all
         </button>
-        {categories.map((el) => (
+        {isPending ? skeletons : categories.map((el) => (
           <button
             className={el == activeCategory ? "btn-active" : "btn"}
             onClick={() => setActiveCategory(el)}

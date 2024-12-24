@@ -5,12 +5,12 @@ import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import NavBar from "./components/NavBar";
 import FullProduct from "./pages/FullProduct";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Basket from "./pages/Basket";
-import axios from "axios";
+import ErrorPage from "./pages/ErrorPage";
+import { useQuery } from "@tanstack/react-query";
 
 function App() {
-  const [products, setProducts] = useState([]);
   const [basketPrducts, setBasketPorducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [activeCategory, setActiveCategory] = useState("");
@@ -31,18 +31,21 @@ function App() {
       }
     });
   }
+  const categoryUrl = activeCategory ? `/category/${activeCategory}` : "";
+  const searchParams = new URLSearchParams();
+  activeSort && searchParams.append("sort", activeSort);
 
-  useEffect(() => {
-    const categoryUrl = activeCategory ? `/category/${activeCategory}` : "";
-    const searchParams = new URLSearchParams();
-    activeSort && searchParams.append("sort", activeSort);
-
-    axios
-      .get(
+  const {
+    isPending,
+    error,
+    data: products,
+  } = useQuery({
+    queryKey: ["gerProducts", activeCategory, activeSort],
+    queryFn: () =>
+      fetch(
         `https://fakestoreapi.com/products${categoryUrl}?${searchParams.toString()}`
-      )
-      .then((response) => setProducts(response.data));
-  }, [activeCategory, activeSort]);
+      ).then((res) => res.json()),
+  });
 
   return (
     <>
@@ -62,14 +65,14 @@ function App() {
               products={products}
               setSelectedProduct={setSelectedProduct}
               addToBasket={addToBasket}
+              isPending={isPending}
+              error={error}
             />
           }
         />
         <Route
           path={`/products/:id`}
-          element={
-            <FullProduct products={products} addToBasket={addToBasket} />
-          }
+          element={<FullProduct addToBasket={addToBasket} />}
         />
         <Route path={`/contact`} element={<Contact />} />
         <Route
@@ -82,6 +85,7 @@ function App() {
           }
         />
         <Route path={`*`} element={<NotFound />} />
+        <Route path={"/error"} element={<ErrorPage />} />
       </Routes>
     </>
   );
