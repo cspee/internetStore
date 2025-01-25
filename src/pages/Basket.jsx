@@ -1,5 +1,4 @@
 export default function Basket({ basketPrducts, setBasketPorducts }) {
-  // вынести в компонент?
   function deleteFromBasket(id) {
     setBasketPorducts(
       basketPrducts.filter((el) => {
@@ -32,7 +31,7 @@ export default function Basket({ basketPrducts, setBasketPorducts }) {
     return <p className="basket-empty">Basket is Empty!</p>;
   }
   return (
-    <div>
+    <div className="basket-gap">
       {basketPrducts.map((el) => (
         <div key={el.id} className="basket">
           <div className="basket-container">

@@ -32,6 +32,7 @@ export default function Filter({
   ));
   return (
     <>
+    <div className="categories-container">
       <div className="categories">
         <button
           className={activeCategory == "" ? "btn-active" : "btn"}
@@ -41,7 +42,8 @@ export default function Filter({
         </button>
         {isPending ? skeletons : categories.map((el) => (
           <button
-            className={el == activeCategory ? "btn-active" : "btn"}
+          style={{display: 'inline-block'}}
+            className= { el == activeCategory ? "btn-active " : "btn" } 
             onClick={() => setActiveCategory(el)}
             key={el}
           >
@@ -61,6 +63,7 @@ export default function Filter({
         <option value="asc">asc</option>
         <option value="desc">desc</option>
       </select>
+    </div>
     </>
   );
 }

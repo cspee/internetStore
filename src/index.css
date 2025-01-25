@@ -167,6 +167,26 @@ button {
   background-color: aquamarine;
 }
 
+.product-btn:active {
+  transition: 0.05s;
+  background-color: white;
+}
+
+.products-header {
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%;
+  margin: 0 auto;
+}
+
+.categories-container {
+  display: flex;
+  flex-direction: column;
+ 
+}
+
 .products {
   margin: 0 auto;
   display: flex;
@@ -243,7 +263,7 @@ button {
 }
 
 .basket-container {
-  border: 1px solid black;
+  border: 2px solid black;
   border-radius: 5px;
   height: 145px;
   margin: 0 auto;
@@ -258,11 +278,18 @@ button {
 }
 
 .basket-img {
+  max-height: 125px;
   width: 100px;
 }
 
 .basket-container {
   font-weight: 800;
+}
+
+.basket-gap {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .basket-actions {
@@ -273,9 +300,9 @@ button {
 }
 
 .categories {
-  display: flex;
+  
+  display: inline-flex;
   gap: 10px;
-  width: 95%;
   margin: 20px auto;
 }
 
@@ -289,8 +316,7 @@ button {
 }
 
 .fitler-select {
-  margin-left: 36px;
-  margin-bottom: 10px;
+ margin-bottom: 10px;
 }
 
 .basket-fullPrice {

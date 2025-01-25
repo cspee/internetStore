@@ -15,7 +15,8 @@ function App() {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [activeCategory, setActiveCategory] = useState("");
   const [activeSort, setAciveSort] = useState("");
-  //1, 2, 3
+
+  
   function addToBasket(el) {
     console.log(basketPrducts);
     setBasketPorducts((prev) => {
@@ -67,6 +68,7 @@ function App() {
               addToBasket={addToBasket}
               isPending={isPending}
               error={error}
+              basketPrducts={basketPrducts}
             />
           }
         />
